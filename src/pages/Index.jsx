@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Container, Flex, Input, Stack, Text, Textarea, useToast, VStack, IconButton, Divider, Heading, InputGroup, InputRightElement, useDisclosure } from "@chakra-ui/react";
 import { FaHeart, FaShare, FaComment, FaQuoteRight, FaSearch, FaPlus } from "react-icons/fa";
 import StatsCard from "../components/StatsCard";
@@ -54,21 +54,29 @@ const Index = () => {
   const totalComments = posts.reduce((acc, post) => acc + post.comments.length, 0);
   const totalShares = posts.reduce((acc, post) => acc + post.shares, 0);
 
+  const reasons = ["It helps others learn from your experience.", "It can inspire others to overcome their own challenges.", "It promotes a culture of transparency and honesty.", "It can help you reflect and learn from your own experiences.", "It can reduce the stigma around failure.", "It encourages a growth mindset.", "It can foster community and support.", "It can lead to unexpected opportunities.", "It helps build resilience.", "It shows that failure is a part of the journey to success."];
+  const [currentReasonIndex, setCurrentReasonIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentReasonIndex((prevIndex) => (prevIndex + 1) % reasons.length);
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <Container maxW="container.md" py={5}>
-      {posts.length === 0 ? (
-        <Flex height="80vh" align="center" justify="center">
-          <Text fontSize="xl" textAlign="center" color="gray.600">
-            Sharing your failure stories can inspire others and help destigmatize failure. Let's make celebrating failures cool again!
-          </Text>
-        </Flex>
-      ) : (
-        <Flex justify="space-between" align="center" mb={6}>
-          <Button ml="30px" mt="30px" onClick={onToggle}>
-            I got a failure story to share
-          </Button>
-        </Flex>
-      )}
+      <Flex height="80vh" align="center" justify="center" direction="column">
+        <Text fontSize="xl" textAlign="center" color="gray.600" mb={4}>
+          Here are 10 reasons why you need to share your failure story:
+        </Text>
+        <Text fontSize="lg" textAlign="center" color="gray.500">
+          {reasons[currentReasonIndex]}
+        </Text>
+        <Button mt={10} onClick={onToggle}>
+          I got a failure story to share
+        </Button>
+      </Flex>
     </Container>
   );
 };
