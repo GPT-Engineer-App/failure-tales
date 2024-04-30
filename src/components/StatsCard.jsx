@@ -3,7 +3,7 @@ import { Box, Text, Stat, StatLabel, StatNumber, StatGroup } from "@chakra-ui/re
 
 const StatsCard = ({ totalPosts, totalLikes, totalComments, totalShares }) => {
   return (
-    <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
+    <Box p={5} shadow="2xl" borderWidth="2px" borderRadius="lg" bgGradient="linear(to-r, teal.200, blue.500)" transition="0.3s ease-out">
       <StatGroup>
         <Stat>
           <StatLabel>Total Posts</StatLabel>
