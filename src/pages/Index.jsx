@@ -66,13 +66,7 @@ const Index = () => {
 
   return (
     <Container maxW="container.md" py={5}>
-      <Flex height="80vh" align="center" justify="center" direction="column">
-        <Text fontSize="xl" textAlign="center" color="gray.600" mb={4}>
-          Here are 10 reasons why you need to share your failure story:
-        </Text>
-        <Text fontSize="lg" textAlign="center" color="gray.500">
-          {reasons[currentReasonIndex]}
-        </Text>
+      <Flex height="80vh" align="top" justify="center" direction="column">
         <Button mt={10} onClick={onToggle}>
           I got a failure story to share
         </Button>
