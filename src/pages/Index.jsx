@@ -57,14 +57,10 @@ const Index = () => {
   return (
     <Container maxW="container.md" py={5}>
       <Flex justify="space-between" align="center" mb={6}>
-        <Text ml="30px" mt="30px">
-          Failure Story
-        </Text>
-        <Button mr="30px" mt="30px" onClick={onToggle}>
-          Share Your Failure Story
+        <Button ml="30px" mt="30px" onClick={onToggle}>
+          I got a failure story to share
         </Button>
       </Flex>
-      
     </Container>
   );
 };
