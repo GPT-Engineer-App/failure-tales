@@ -56,11 +56,19 @@ const Index = () => {
 
   return (
     <Container maxW="container.md" py={5}>
-      <Flex justify="space-between" align="center" mb={6}>
-        <Button ml="30px" mt="30px" onClick={onToggle}>
-          I got a failure story to share
-        </Button>
-      </Flex>
+      {posts.length === 0 ? (
+        <Flex height="80vh" align="center" justify="center">
+          <Text fontSize="xl" textAlign="center" color="gray.600">
+            Sharing your failure stories can inspire others and help destigmatize failure. Let's make celebrating failures cool again!
+          </Text>
+        </Flex>
+      ) : (
+        <Flex justify="space-between" align="center" mb={6}>
+          <Button ml="30px" mt="30px" onClick={onToggle}>
+            I got a failure story to share
+          </Button>
+        </Flex>
+      )}
     </Container>
   );
 };
