@@ -66,11 +66,10 @@ const Index = () => {
 
   return (
     <Container maxW="container.md" py={5}>
-      <Flex height="80vh" align="top" justify="center" direction="column" position="absolute" top="30px" left="30px">
-        <Button mt={10} onClick={onToggle}>
+      <Button style={{ position: 'absolute', top: '30px', left: '30px' }} onClick={onToggle}>
           I got a failure story to share
         </Button>
-      </Flex>
+      
     </Container>
   );
 };
