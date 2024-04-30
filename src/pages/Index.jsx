@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Container, Flex, Input, Stack, Text, Textarea, useToast, VStack, IconButton, Divider, Heading, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { FaHeart, FaShare, FaComment, FaQuoteRight, FaSearch } from "react-icons/fa";
+import StatsCard from "../components/StatsCard";
 
 const Index = () => {
   const [posts, setPosts] = useState([]);
@@ -47,9 +48,15 @@ const Index = () => {
     setPosts(filteredPosts);
   };
 
+  const totalPosts = posts.length;
+  const totalLikes = posts.reduce((acc, post) => acc + post.likes, 0);
+  const totalComments = posts.reduce((acc, post) => acc + post.comments.length, 0);
+  const totalShares = posts.reduce((acc, post) => acc + post.shares, 0);
+
   return (
     <Container maxW="container.md" py={5}>
       <VStack spacing={4}>
+        <StatsCard totalPosts={totalPosts} totalLikes={totalLikes} totalComments={totalComments} totalShares={totalShares} />
         <Heading mb={6}>Share Your Failure Stories</Heading>
         <InputGroup>
           <Input placeholder="Search posts..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
